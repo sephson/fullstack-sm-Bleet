@@ -4,6 +4,7 @@ import profilepic from "../images/pic1.jpg";
 import PersonIcon from "@material-ui/icons/Person";
 import MessageIcon from "@material-ui/icons/Message";
 import SearchIcon from "@material-ui/icons/Search";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [click, setClick] = useState(false);
@@ -22,8 +23,11 @@ const Navbar = () => {
           type="text"
           placeholder="Search Users"
         /> */}
+
         <div className="left-side-nav">
-          <h1 className="navbarLogo">BLEET</h1>
+          <Link to="/">
+            <h1 className="navbarLogo">BLEET</h1>
+          </Link>
         </div>
 
         <div className="right-side-nav">
@@ -50,15 +54,21 @@ const Navbar = () => {
         </div>
 
         <ul className={click ? "nav-menu active" : "nav-menu"}>
-          <li className="nav-links" onClick={closeMobileMenu}>
-            <PersonIcon className="Material-icon" /> My Profile
-          </li>
-          <li className="nav-links" onClick={closeMobileMenu}>
-            <MessageIcon className="Material-icon" /> Messages
-          </li>
-          <li className="nav-links" onClick={closeMobileMenu}>
-            <SearchIcon className="Material-icon" /> Search
-          </li>
+          <Link to="/profile">
+            <li className="nav-links" onClick={closeMobileMenu}>
+              <PersonIcon className="Material-icon" /> My Profile
+            </li>
+          </Link>
+          <Link to="/messages">
+            <li className="nav-links" onClick={closeMobileMenu}>
+              <MessageIcon className="Material-icon" /> Messages
+            </li>
+          </Link>
+          <Link to="/search">
+            <li className="nav-links" onClick={closeMobileMenu}>
+              <SearchIcon className="Material-icon" /> Search
+            </li>
+          </Link>
         </ul>
       </nav>
     </>

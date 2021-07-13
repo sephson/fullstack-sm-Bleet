@@ -6,7 +6,7 @@ export const fakePost = [
     date: "5 mins ago",
     userId: 1,
     like: 32,
-    comment: 9,
+    comment: 14,
   },
   {
     id: 2,

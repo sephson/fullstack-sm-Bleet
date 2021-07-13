@@ -1,6 +1,7 @@
 import "./App.css";
 import Home from "./pages/Home/Home";
 import Profile from "./pages/Profile/Profile";
+import SinglePost from "./pages/SinglePost/SinglePost";
 import {
   BrowserRouter as Router,
   Switch,
@@ -15,6 +16,7 @@ function App() {
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/profile" component={Profile} />
+          <Route path="/single-post" component={SinglePost} />
         </Switch>
       </Router>
     </>
