@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./Navbar.css";
-import profilepic from "../images/pic1.jpg";
+
 import PersonIcon from "@material-ui/icons/Person";
 import MessageIcon from "@material-ui/icons/Message";
 import SearchIcon from "@material-ui/icons/Search";
 import { Link } from "react-router-dom";
+import { AppContext } from "../../context/AppContext";
 
 const Navbar = () => {
+  const { user } = useContext(AppContext);
+  const pf = process.env.REACT_APP_PUBLIC_FOLDER;
   const [click, setClick] = useState(false);
   const handleClick = () => {
     setClick(!click);
@@ -32,7 +35,11 @@ const Navbar = () => {
 
         <div className="right-side-nav">
           <img
-            src={profilepic}
+            src={
+              user.profilePicture
+                ? pf + user.profilePicture
+                : pf + "person/a.png"
+            }
             className="userProfilePicture"
             alt="profilepic"
           />

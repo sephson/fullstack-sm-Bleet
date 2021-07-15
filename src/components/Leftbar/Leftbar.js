@@ -1,7 +1,9 @@
+// import React, { useContext } from "react";
 import React from "react";
 import PersonIcon from "@material-ui/icons/Person";
 import MessageIcon from "@material-ui/icons/Message";
 import SearchIcon from "@material-ui/icons/Search";
+// import { AppContext } from "../../context/AppContext";
 import { Link } from "react-router-dom";
 import "./Leftbar.css";
 
@@ -13,7 +15,7 @@ const Leftbar = () => {
   return (
     <div className="left-component">
       <ul className="left-menu">
-        <Link to="/profile">
+        <Link to={`/profile`}>
           <li className="nav-links">
             <PersonIcon className="Material-icon" /> My Profile
           </li>
