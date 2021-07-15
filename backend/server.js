@@ -3,6 +3,8 @@ const mongoose = require("mongoose");
 const path = require("path");
 const helmet = require("helmet");
 const authRoute = require("./Routes/AuthRoute");
+const userRoute = require("./Routes/UserRoute");
+const postRoute = require("./Routes/PostRoute");
 const morgan = require("morgan");
 const dotenv = require("dotenv");
 
@@ -27,6 +29,8 @@ app.use(helmet());
 app.use(morgan("common"));
 
 app.use("/api/auth", authRoute);
+app.use("/api/user", userRoute);
+app.use("/api/post", postRoute);
 
 app.listen(process.env.PORT, () => {
   console.log(`server running on port ${process.env.PORT}`);
