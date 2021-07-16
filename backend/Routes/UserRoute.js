@@ -18,6 +18,20 @@ router.get("/", async (req, res) => {
     res.status(500).json(error);
   }
 });
+
+//update user
+router.put("/:id/update", async (req, res) => {
+  try {
+    const user = Auth.findById(req.params.id);
+    if (user) {
+      await user.updateOne({ $set: { bio: req.body.bio } });
+      res.status(200).json("Bio updated");
+    } else res.status(404).json("not found");
+  } catch (err) {
+    return res.status(500).json(err);
+  }
+});
+
 //follow user
 router.put("/:id/follow", async (req, res) => {
   if (req.body.userId !== req.params.id) {
@@ -25,7 +39,7 @@ router.put("/:id/follow", async (req, res) => {
 
     try {
       const user = await Auth.findById(req.params.id);
-      const currentUser = await User.findById(req.body.userId);
+      const currentUser = await Auth.findById(req.body.userId);
 
       if (!user.followers.includes(req.body.userId)) {
         await user.updateOne({ $push: { followers: req.body.userId } });
@@ -47,7 +61,7 @@ router.put("/:id/unfollow", async (req, res) => {
   if (req.body.userId !== req.params.id) {
     try {
       const user = await Auth.findById(req.params.id);
-      const currentUser = await User.findById(req.body.userId);
+      const currentUser = await Auth.findById(req.body.userId);
 
       if (user.following.includes(req.body.userId)) {
         //you can only unfollow when you follow each other already

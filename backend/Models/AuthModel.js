@@ -32,13 +32,14 @@ const authSchema = new mongoose.Schema(
       type: Array,
       default: [],
     },
-    isAdmin: {
-      type: Boolean,
-      default: false,
-    },
     bio: {
       type: String,
       max: 50,
+      default: "",
+    },
+    isAdmin: {
+      type: Boolean,
+      default: false,
     },
   },
   { timestamps: true }
